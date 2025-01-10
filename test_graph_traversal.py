@@ -3,7 +3,7 @@ from dfs_bfs import dfs_1, dfs_2, bfs, dfs_paths
 
 class TestGraphTraversal(unittest.TestCase):
     def setUp(self):
-        """Set up test graph before each test"""
+        Set up test graph before each test"""
         self.graph = {
             'A': {'B', 'C'},
             'B': {'A', 'D', 'E'},
@@ -24,8 +24,8 @@ class TestGraphTraversal(unittest.TestCase):
         self.assertEqual(dfs_1(single_node, 'A'), {'A'})
 
     def test_dfs_2(self):
-        """Test recursive DFS implementation"""
-        # Test from different starting points
+    Test recursive DFS implementation"""
+         Test from different starting points
         self.assertEqual(len(dfs_2(self.graph, 'A')), 6)  # Should visit all nodes
         self.assertEqual(len(dfs_2(self.graph, 'F')), 6)  # Should visit all nodes
         
@@ -33,7 +33,7 @@ class TestGraphTraversal(unittest.TestCase):
         self.assertEqual(len(dfs_1(self.graph, 'A')), len(dfs_2(self.graph, 'A')))
 
     def test_bfs(self):
-        """Test BFS implementation"""
+     Test BFS implementation"""
         # Test from different starting points
         self.assertEqual(len(bfs(self.graph, 'A')), 6)  # Should visit all nodes
         self.assertEqual(len(bfs(self.graph, 'F')), 6)  # Should visit all nodes
@@ -72,7 +72,13 @@ class TestGraphTraversal(unittest.TestCase):
         # Test with disconnected graph
         disconnected = {
             'A': {'B'},
-            'B': {'A'},
+            'B': {'A'},ef test_edge_cases(self):
+        """Test edge cases and error handling"""
+        # Test with empty graph
+        empty_graph = {}
+        with self.assertRaises(ValueError):
+            dfs_1(empty_graph, 'A')
+        
             'C': {'D'},
             'D': {'C'}
         }
